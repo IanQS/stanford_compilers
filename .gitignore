@@ -1,0 +1,7 @@
+*.aux
+*.log
+*.gz
+notes/auto
+*.png
+notes/compile_outputs/auto/
+Compilers/
