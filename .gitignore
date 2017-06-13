@@ -1,7 +1,8 @@
 *.aux
 *.log
 *.gz
+*.out
 notes/auto
 *.png
 notes/compile_outputs/auto/
-Compilers/
+vm/
