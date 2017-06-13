@@ -423,6 +423,10 @@
     \item A: \hfill input $\rightarrow^{A}$ A(fin)
     \item AB: \hfill input $\rightarrow^{A}$ A(not fin) $\rightarrow^{\epsilon}$ B(fin)
     \item A + B: $\epsilon$ either to A or B then $\epsilon$ to fin
+    \item AB and A+B as an NFA
+
+      \includegraphics[width=13cm]{example_3}
+
     \item \textbf{Example: } (1 + 0)$^*$1
 
       \includegraphics[width=13cm]{example_1}
@@ -468,6 +472,18 @@
         \hline
       \end{tabular}
     \end{center}
+
+
+  \item \textbf{NFA to DFA}
+    \begin{enumerate}
+    \item Begin with the start state, then determine the set of states in the
+      $\epsilon$ closure
+    \item Consider all possible transitions from the ``blob'', and generate new blobs
+    \item Enumerate all the blobs
+    \item Finish
+    \end{enumerate}
+
+    \includegraphics[width=13 cm]{example_4}
   \end{enumerate}
 
   The reason we defined the final state that way is that we don't care about any
