@@ -1,5 +1,6 @@
 # Notes for Stanfords online Compilers Class
 
+
 ## Note: AFAIK the grading script for this iteration of the class isn't hosted online anymore. If you know where I can find it please let me know
 
 Course can be found [here](https://lagunita.stanford.edu/courses/Engineering/Compilers/Fall2014/about)

@@ -138,10 +138,173 @@
 
 % To have just one problem per page, simply put a \clearpage after each problem
 
-\begin{homeworkProblem}{Parsing - Introduction}
+\begin{homeworkProblem}{\textbf{Parsing - Introduction}}
 
-  bla bla bla
+  \problemAnswer{
 
+    \textbf{Regular Languages}
+    \begin{enumerate}
+    \item Weakest formal languages - most languages aren't regular
+
+      \{($^i)^i$ $|$ i $\geq$ 0 \}, the set of all balanced parens, which can't be
+      represented as a regular language
+
+    \item What \textbf{CAN} a regular language express?
+      \begin{enumerate}
+      \item count mod k
+
+        can't calculate to some arbitrarily high value, like in balanced parens problem
+      \end{enumerate}
+
+    \item
+      \begin{tabular}{c| c| c}
+        Phase & Input & Output\\
+        \hline
+        Lexer & String of Chars & String of Tokens\\
+        Parser & String of tokens (output of lexer) & Parse Tree\\
+      \end{tabular}
+    \end{enumerate}
+  }
 \end{homeworkProblem}
+
+\begin{homeworkProblem}{\textbf{Context Free Grammars}}
+
+  \begin{enumerate}
+  \item \textbf{The Problem}
+
+    \begin{enumerate}
+    \item Not all strings of tokens are programs
+
+      Thus, need a language for describing valid strings of tokens and method to
+      distinguish invalid and valid strings of tokens
+
+      Note:
+      CFG $\supset$ RegExp
+
+    \item Programming Languages have a recursive structure, and CFGs are a
+      natural notation for describing these structures.
+    \end{enumerate}
+
+  \item \textbf{What IS a CFG?}
+
+    \begin{enumerate}
+    \item A set of terminals, T
+    \item A set of non-terminals, N
+    \item A start symbol, S (S $\in$ N)
+    \item A set of productions: (A symbol, followed by an arrow then a list of symbols)
+
+      X $\rightarrow$ Y$_1$, ... Y$_n$
+
+      X $\in$ N and $Y_i \in N \cup T \cup \{\epsilon\}$
+    \end{enumerate}
+
+  \item \textbf{CFG example: Balanced Parens Problem}
+
+    \textbf{Productions / Rules}
+
+    \problemAnswer{
+      S $\rightarrow$ (S) \hfill S, our start state then becomes another state with two
+      parens around it
+
+      S $\rightarrow$ $\epsilon$
+    }
+
+    \textbf{Our States}
+
+    N = \{S\}
+
+    T = \{(, )\}
+
+    S = start symbol \hfill in general the first production will specify the
+    start symbol for that CFG
+
+  \item \textbf{Productions as rules:}
+
+    \begin{enumerate}
+    \item Begin with a String that only has start symbol, S
+    \item Replace any non-terminal X in start by RHS of some production
+    \item Repeat (2) until there are no non-terminals
+    \end{enumerate}
+
+    If we consider a single step as $\alpha$, then a program can be thought of as
+
+    $\alpha_0$ $\rightarrow$ $\alpha_1$ $\rightarrow$ ... $\rightarrow$ $\alpha_n$ \hfill equiv $\alpha_0$ $\rightarrow^*$ $\alpha_n$
+
+
+  \item \textbf{CFG formal definition}
+
+    Let G be a CFG with start symbol S, then L(G) of G is:
+
+    \[\{ a_1,...,a_n | \forall i , a_i \in T, S\rightarrow^* a_1,...,a_n \}\]
+
+
+  \end{enumerate}
+\end{homeworkProblem}
+
+\begin{homeworkProblem}{\textbf{Derivations Part 1}}
+  \begin{enumerate}
+  \item \textbf{Derivation:} a sequence of productions
+  \item \textbf{Representations}
+
+    - A derivation can be drawn as a tree instead of a linear path
+
+    - A derivation can be drawn as a tree
+
+    \begin{enumerate}
+    \item Start symbol is the root
+    \item For a production, add the children
+    \end{enumerate}
+
+
+    \textbf{Example: }
+
+    Grammar:  E $\rightarrow$ E + E $|$ E * E $|$ (E) $|$ id
+
+    \includegraphics[width=13cm]{derivation_tree}
+
+    LHS: Derivation intermediates (Left-most derivation)
+
+    RHS: Parse tree of input string
+
+  \item \textbf{Parse Trees}
+    \begin{enumerate}
+    \item Terminals at the leaves
+    \item Non-terminals at interiors
+    \item in-order traversal of tree is original input
+    \item Parse tree shows association of operations, input string does not (in
+      tree we see multiplication is more tight than addition)
+    \item Left-most and right-most derivation produces same parse tree, but the
+      main difference is the intermediate step
+    \end{enumerate}
+
+  \end{enumerate}
+\end{homeworkProblem}
+
+\begin{homeworkProblem}{\textbf{Ambiguity in CFGs}}
+
+  \begin{enumerate}
+  \item \textbf{Ambiguity}: if there is more than one parse tree for some string
+    (more than 1 left-most or right-most derivation)
+
+    This is bad, because it means that the decision is left to the compiler
+
+  \item Determining if it's ambiguous
+
+    Construct a string, then work backwards and see if there is more than 1 way
+    to get the tree
+
+  \item \textbf{Removing ambiguity}
+
+    id * id + id
+
+    E $\rightarrow$ E' + E | E'
+
+    E' $\rightarrow$ id * E' | id | (E) * E' | (E)
+
+    rewrite to enforce precedence of * over +, by separating multiplication and
+    + s.t * is handled by E'
+  \end{enumerate}
+\end{homeworkProblem}
+
 
 \end{document}
