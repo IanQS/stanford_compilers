@@ -489,6 +489,32 @@
   The reason we defined the final state that way is that we don't care about any
   specific final state, we just want to get to a final state.
 
-  \end{homeworkProblem}
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}{\Large \textbf{Quiz Hints}}
+
+  \begin{enumerate}
+  \item First ignore the $\epsilon$ then find the number of possible strings. Then,
+    consider with 1, 2, 3 and 4 epsilons.
+  \item Consider each ``level'' to be another rule where it goes from level to
+    level. Note, it does not loop on itself so if it's not fully eaten up by the
+    end it's not accepted - this is in line with what happens if you try to
+    construct a DFA
+  \item Remember priority. Also, when they say tokenize here, they mean tokenize
+    the entire thing (so the output of tokenization is the same as the input)
+  \item Just trace it
+  \item I considered the start state to be 1 state as well
+  \item Remember + means 1 or more and * means 0 or more
+  \item -
+  \item -
+  \item -
+  \item I honestly don't remember how I did this without just working it out and
+    spending a lot of time on this, sorry
+  \item Read the definition
+  \item Read the definition (the name itself is helpful here: non-deterministic)
+  \end{enumerate}
+
+\end{homeworkProblem}
 
 \end{document}
